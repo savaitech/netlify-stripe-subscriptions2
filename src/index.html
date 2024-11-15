@@ -49,29 +49,50 @@
     .content img {
       width: 100%;
     }
-  </style>
-  
+        /* Reset styles for consistent appearance across browsers */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styles for body */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+            padding: 10px;
+        }
+
+        /* Container for the pricing table */
+        .pricing-table-container {
+            width: 100%;
+            max-width: 800px; /* Limits the max width on larger screens */
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        /* Responsive styles for smaller devices */
+        @media (max-width: 768px) {
+            .pricing-table-container {
+                padding: 10px;
+            }
+        }
+    </style>  
   <h1>Sign Up for Premium Corgi Content</h1>
   
-  <div class="user-info">
-    <button id="left">Log In</button>
-    <button id="right">Sign Up</button>
-  </div>
-  
-  <div class="corgi-content">
-    <div class="content">
-      <h2>Free Content</h2>
-      <div class="free"></div>
+    <div class="pricing-table-container">
+    <!-- Stripe Pricing Table Integration -->
+        <stripe-pricing-table
+            pricing-table-id="prctbl_1QLWja2KgcKvlGIqzcnfdpMM"
+            publishable-key="pk_live_51PXQWX2KgcKvlGIqX6Xl53J53i5RnItaGvS3U0ae7xVrkURA3RLyjC4j9hpYt3VzaqQS23i3n0qgtH3peANxcVoD00TEXhVmSm">
+        </stripe-pricing-table>
     </div>
-    <div class="content">
-      <h2>Pro Content</h2>
-      <div class="pro"></div>
-    </div>
-    <div class="content">
-      <h2>Premium Content</h2>
-      <div class="premium"></div>
-    </div>
-  </div>
   
   <template id="content">
     <figure class="content-display">
@@ -86,7 +107,8 @@
     type="text/javascript"
     src="https://identity.netlify.com/v1/netlify-identity-widget.js"
   ></script>
-  
+  <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+
   <script>
     const button1 = document.getElementById('left');
     const button2 = document.getElementById('right');
